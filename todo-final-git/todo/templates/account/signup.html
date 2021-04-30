@@ -1,0 +1,46 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+  <div class="col-md-5">
+      <h1>{% trans "Sign Up" %}</h1>
+
+      <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+  
+  
+  <div class="form-group">
+  <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+      
+      {% if form.errors %}
+      {% for field in form %}
+      {% for error in field.errors %}
+      <div class="alert alert-danger" role="alert">{{ error|escape }}</div>
+      {% endfor %}
+      {% endfor %}
+      {% for error in form.non_field_errors %}
+      <div class="alert alert-danger" role="alert">{{ error|escape }}</div>
+      {% endfor %}
+      {% endif %}
+      {% csrf_token %}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+    <label for="id_email">E-mail:</label>
+    <input  type="email" name="email" placeholder="E-mail address" autocomplete="email" class="form-control" required id="id_email">
+    <br>
+    <label for="id_password1">Password:</label>
+  <input class="form-control" type="password" name="password1" placeholder="Password" autocomplete="new-password" class="form-control" required id="id_password1">
+  <br>
+  <label for="id_password2">Password (again):</label>
+  <input class="form-control" type="password" name="password2" placeholder="Password (again)" class="form-control" required id="id_password2">
+  <br>
+  <button class="btn btn-primary" type="submit">Sign Up &raquo;</button>
+  </form>
+  </div>
+  </div>
+  </div>
+  
+{% endblock %}
