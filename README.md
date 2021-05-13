@@ -1,9 +1,11 @@
 # Django Todo app with Allauth and social accounts: Google and Facebook.
 
 
-- Frontend: HTML, CSS, Django, Python, Bootstrap, jQuery, Font Awesome
+- Frontend: HTML, CSS, Django, Python, Bootstrap, jQuery
 
 - Backend: Django, Python
+
+- DB: SQLite
 
 - User management: Allauth
 
